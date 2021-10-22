@@ -1,53 +1,39 @@
-# Astro Starter Kit: Blog
+# ConvertKit Integration
 
-```
-npm init astro -- --template blog
-```
+The integration is located in src > pages > index.astro:
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/snowpackjs/astro/tree/latest/examples/blog)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-Features:
-
-- ✅ SEO-friendly setup with canonical URLs and OpenGraph data
-- ✅ Full Markdown support
-- ✅ RSS 2.0 generation
-- ✅ Sitemap.xml generation
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   ├── robots.txt
-│   └── favicon.ico
-├── src/
-│   ├── components/
-│   │   └── Tour.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```html
+<form action="https://app.convertkit.com/forms/[YOUR_FORM_ID]/subscriptions" method="post" data-sv-form="[YOUR_FORM_ID]" data-uid="[YOUR_UID]" data-version="5">
+  <input type="email" name="email_address" placeholder="Email Address">
+  <span>
+      <button type="submit" data-element="submit">
+          Sign Up
+      </button>
+  </span>
+</form>
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Your Form ID
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+[YOUR_FORM_ID] is found when editing a convertkit form. The URL will look something like: https://app.convertkit.com/forms/designers/[#######]/edit
 
-Any static assets, like images, can be placed in the `public/` directory.
+Copy the 7 digits in between "designers/" and "/edit". Paste those digits into anywhere that says [YOUR_FORM_ID]
 
-## 🧞 Commands
+## Data_UID
 
-All commands are run from the root of the project, from a terminal:
+While editing a convertkit form, click the public button in the top right.
 
-| Command         | Action                                      |
-|:----------------|:--------------------------------------------|
-| `npm install`   | Installs dependencies                       |
-| `npm run dev`   | Starts local dev server at `localhost:3000` |
-| `npm run build` | Build your production site to `./dist/`     |
+![image](https://user-images.githubusercontent.com/6586811/138515493-b57ef23e-b44d-49a3-a179-41c3a7e46942.png)
 
-## 👀 Want to learn more?
+A new modal should pop up, with options to select JS, HTML, Share, Wordpress and Unbounce. Select "Share"
 
-Feel free to check [our documentation](https://github.com/snowpackjs/astro) or jump into our [Discord server](https://astro.build/chat).
+![image](https://user-images.githubusercontent.com/6586811/138515797-77dd9709-4093-45d3-8229-d3199d24de0f.png)
+
+Copy the string of numbers and letters that appears after "page/" (indicated by the red underline above)
+
+Paste that anywhere that said [YOUR_UID]
+
+## Conclusion
+
+If you've copied both your Form ID and your UID, you should be good to go. Just type an email into the textbox, hit submit, verify your email address, and you should see a new subscriber.
+
